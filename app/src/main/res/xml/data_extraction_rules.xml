@@ -5,15 +5,10 @@
 -->
 <data-extraction-rules>
     <cloud-backup>
-        <!-- TODO: Use <include> and <exclude> to control what is backed up.
-        <include .../>
-        <exclude .../>
-        -->
+        <!-- Keep sensitive SMS database strictly local on device to comply with Google Play Data Safety & Play Protect -->
+        <exclude domain="database" path="dual_sim_sms_database" />
     </cloud-backup>
-    <!--
     <device-transfer>
-        <include .../>
-        <exclude .../>
+        <exclude domain="database" path="dual_sim_sms_database" />
     </device-transfer>
-    -->
 </data-extraction-rules>

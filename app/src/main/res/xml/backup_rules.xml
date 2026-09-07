@@ -6,8 +6,6 @@
    See https://developer.android.com/about/versions/12/backup-restore
 -->
 <full-backup-content>
-    <!--
-   <include domain="sharedpref" path="."/>
-   <exclude domain="sharedpref" path="device.xml"/>
--->
+    <!-- Keep sensitive SMS database strictly local to comply with Google Play Protect policy -->
+    <exclude domain="database" path="dual_sim_sms_database"/>
 </full-backup-content>
