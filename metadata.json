@@ -1,0 +1,6 @@
+{
+  "name": "Dual SIM SMS",
+  "description": "Dual SIM SMS messenger with separate SIM chat sections, automated smart filtering, and per-SIM notification management.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
