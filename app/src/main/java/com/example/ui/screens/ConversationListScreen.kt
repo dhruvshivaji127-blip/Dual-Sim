@@ -82,6 +82,7 @@ import com.example.ui.SmsViewModel
 import com.example.ui.components.CategoryBadge
 import com.example.ui.components.DefaultAppBanner
 import com.example.ui.components.NewMessageDialog
+import com.example.ui.components.PrivacyPolicyDialog
 import com.example.ui.components.SimSlotBadge
 import com.example.ui.theme.OtpGreen
 import com.example.ui.theme.OtpGreenContainer
@@ -112,6 +113,7 @@ fun ConversationListScreen(
     val simProfiles by viewModel.simProfiles.collectAsState()
 
     var showNewMessageDialog by remember { mutableStateOf(false) }
+    var showPrivacyDialog by remember { mutableStateOf(false) }
     var isSearchExpanded by remember { mutableStateOf(false) }
 
     val sim1 = simProfiles.firstOrNull { it.slotIndex == 0 }
@@ -148,6 +150,9 @@ fun ConversationListScreen(
                         }
                         IconButton(onClick = { viewModel.navigateTo(AppScreen.NOTIFICATIONS) }) {
                             Icon(Icons.Default.Notifications, contentDescription = "Notification Settings")
+                        }
+                        IconButton(onClick = { showPrivacyDialog = true }) {
+                            Icon(Icons.Default.Security, contentDescription = "Data Safety & Privacy")
                         }
                         IconButton(onClick = { viewModel.navigateTo(AppScreen.SIM_SETTINGS) }) {
                             Icon(Icons.Default.Settings, contentDescription = "SIM Card Settings")
@@ -404,6 +409,12 @@ fun ConversationListScreen(
                 viewModel.sendMessage(recipient, text, simSlot)
                 viewModel.openConversation(recipient)
             }
+        )
+    }
+
+    if (showPrivacyDialog) {
+        PrivacyPolicyDialog(
+            onDismiss = { showPrivacyDialog = false }
         )
     }
 }
